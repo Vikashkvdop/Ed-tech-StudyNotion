@@ -1,0 +1,70 @@
+const express=require("express");
+const app=express();
+
+const userRoutes=require("./routes/User");
+const profileRoutes=require("./routes/Profile");
+const paymentRoutes=require("./routes/Payments");
+const courseRoutes=require("./routes/Course");
+const contactRoutes=require("./routes/Contact");
+
+const database=require("./config/database");
+const cookieParser=require("cookie-parser");
+const cors=require("cors"); // install npm i cors
+const {cloudinaryConnect}=require("./config/cloudinary");
+const fileUpload=require("express-fileupload"); // instsall
+const dotenv=require("dotenv");
+const path=require('path')
+
+dotenv.config();
+const PORT=process.env.PORT || 4000;
+
+const __dirname=path.resolve();
+//database connect
+database.connect();  
+//middlewares
+app.use(express.json());
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(
+    cors({
+        origin:"http://localhost:5173",
+        credentials:true,
+    })
+)
+
+app.use(
+    fileUpload({
+        useTempFiles:true,
+        tempFilesDir:"/tmp",
+    })
+)
+
+//coudinary connection
+cloudinaryConnect();
+//routes
+app.use("/api/v1/auth",userRoutes);
+app.use("/api/v1/profile",profileRoutes);
+app.use("/api/v1/course",courseRoutes);
+app.use("/api/v1/payment",paymentRoutes);
+app.use("/api/v1/reach",contactRoutes);
+
+//def routes
+app.get("/",(req,res)=>{
+    return res.json({
+        success:true,
+        message:'Your server is up and running...'
+    });
+});
+
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "../client/dist")));
+
+  // Only handle non-API routes
+  app.get(/^\/(?!api).*/, (req, res) => {
+    res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
+  });
+}
+app.listen(PORT,()=>{
+    console.log(`App is running at${PORT}`);
+})
