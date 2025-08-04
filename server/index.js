@@ -18,7 +18,7 @@ const path=require('path')
 dotenv.config();
 const PORT=process.env.PORT || 4000;
 
-const __dirname=path.resolve();
+
 //database connect
 database.connect();  
 //middlewares
