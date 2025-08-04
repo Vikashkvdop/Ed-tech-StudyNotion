@@ -49,13 +49,7 @@ app.use("/api/v1/course",courseRoutes);
 app.use("/api/v1/payment",paymentRoutes);
 app.use("/api/v1/reach",contactRoutes);
 
-//def routes
-app.get("/",(req,res)=>{
-    return res.json({
-        success:true,
-        message:'Your server is up and running...'
-    });
-});
+
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../client/dist")));
