@@ -46,7 +46,7 @@ exports.emailVerificationTemplate = (otp) => {
   
     <body>
       <div class="container">
-        <a href="https://studynotion-edtech-project.vercel.app">
+        <a href="https://ed-tech-studynotion-uqxg.onrender.com/">
           <img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion logo" />
         </a>
         <div class="body">

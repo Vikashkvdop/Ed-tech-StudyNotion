@@ -47,7 +47,7 @@ exports.passwordUpdate = (email, name) => {
   
     <body>
       <div class="container">
-        <a href="https://studynotion-edtech-project.vercel.app">
+        <a href="https://ed-tech-studynotion-uqxg.onrender.com">
           <img class="logo" src="https://i.ibb.co/7Xyj3PC/logo.png" alt="StudyNotion logo" />
         </a>
         <div class="message">Password Update Confirmation</div>
@@ -64,7 +64,7 @@ exports.passwordUpdate = (email, name) => {
         </div>
         <div class="support">
           If you have any questions or need further assistance, please feel free to reach us at
-          <a href="mailto:info@studynotion.com">info@studynotion.com</a>. We are here to help!
+          <a href="mailto:kumarvikashverma2">kumarvikashverma2</a>. We are here to help!
         </div>
       </div>
     </body>

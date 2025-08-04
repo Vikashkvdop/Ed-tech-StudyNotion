@@ -31,7 +31,7 @@ exports.resetPasswordToken=async (req,res)=>{
     )
 
     //create url
-    const url=`http://localhost:5173/update-password/${token}`
+    const url=`https://ed-tech-studynotion-uqxg.onrender.com/update-password/${token}`
     //send mail containing the url
     await mailSender(email,"Password Reset Link",`Password Reset Link:${url}`);
 
